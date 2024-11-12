@@ -12,12 +12,25 @@ import requests
 load_dotenv()
 
 app = Flask(__name__)
-# Apply CORS to the entire Flask app
-CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/')
 def hello():
     return 'Main page'
+
+@app.route('/firebase/')
+def hello():
+    return 'FirebasePage'
+
+@app.route('/firebase/<date,Gold>', methods=['POST'])
+def update_quest_status(user_id):
+    if request.method == 'POST':
+        data = request.json
+        idofTask = data.get('idofTask')  # Get idofTask from the request data
+        quest_status = True
+        db.update_user_quest_status(user_id, idofTask, quest_status)
+        return jsonify({'success': True})
+    else:
+        return None
 
 def run_flask():
     app.run(host='0.0.0.0', port=8081)
