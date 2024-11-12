@@ -62,4 +62,4 @@ def save_data(date, metal):
     else:
         print("No data to save.")
 
-save_data("2024-11-11", "Ruthenium")
+#save_data("2024-11-11", "Ruthenium")
