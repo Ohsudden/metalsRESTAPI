@@ -9,10 +9,7 @@ import json
 import requests
 import sys
 
-args= sys.args[1:]
 
-date=args[0]
-metals=args[1]
 
 load_dotenv()
 
@@ -67,4 +64,10 @@ def save_data(date, metal):
     else:
         print("No data to save.")
 
-save_data(date, metals)
+if __name__ == "__main__":
+    args = sys.argv[1:]
+    if len(args) == 2:
+        date, metals = args
+        save_data(date, metals)
+    else:
+        print("Usage: python script.py <date> <metal>")
