@@ -7,7 +7,12 @@ import firebase_admin
 import os
 import json
 import requests
+import sys
 
+args= sys.args[1:]
+
+date=args[0]
+metals=args[1]
 
 load_dotenv()
 
@@ -62,4 +67,4 @@ def save_data(date, metal):
     else:
         print("No data to save.")
 
-#save_data("2024-11-11", "Ruthenium")
+save_data(date, metals)
